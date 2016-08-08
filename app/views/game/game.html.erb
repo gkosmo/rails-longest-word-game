@@ -1,0 +1,32 @@
+<div class="jumbotron text-center"><h2> Game ! </h2></div>
+<div class="container">
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+<div class="well">
+  <table class='table table-bordered'>
+<% @grids.each do |g| %>
+ <tr><% g.each do |l| %>
+  <td> <%= l %> </td>
+
+<% end %>
+ </tr>
+ <% end %>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4  col-md-offset-4">
+<form action="/score" method="get">
+  <input type="hidden" value="<%= @grids %>" name="grid">
+  <label for="question">Speak to your coach - give an answer & be smart</label>
+  <input type="text" id="answer" name="answer" placeholder="what word ?">
+  <input type="submit" value="Go on!">
+</form>
+
+<button class='btn btn-warning' action="<% session[:score] = 0 %>" action="/game"> erase score </button>
+
+</div>
+<div class="col-md-4  col-md-offset-4">
+<h2> score :  <%=  @score  %></h2>
+</div>
